@@ -51,7 +51,8 @@ class CashCalculator(Calculator):
     RUB_RATE = 1
 
     def get_today_cash_remained(self, currency='rub'):
-        """Определяет сколько ещё денег можно потратить сегодня в рублях, долларах или евро"""
+        """Определяет сколько ещё денег можно потратить сегодня в рублях,
+        долларах или евро."""
         currencies = {'usd': ('USD', CashCalculator.USD_RATE),
                       'eur': ('Euro', CashCalculator.EURO_RATE),
                       'rub': ('руб', CashCalculator.RUB_RATE)}
@@ -86,6 +87,3 @@ class Record:
 if __name__ == '__main__':
     pass
 
-    cash_calculator = CashCalculator(1000)
-    cash_calculator.add_record(Record(amount=350, comment="Обед в кафе"))
-    print(cash_calculator.get_today_cash_remained("eur")) 
