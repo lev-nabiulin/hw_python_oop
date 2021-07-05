@@ -83,5 +83,6 @@ class Record:
         else:
             self.date = dt.datetime.strptime(date, self.DATE_FORMAT).date()
 
+
 if __name__ == '__main__':
     pass
