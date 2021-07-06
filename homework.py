@@ -41,8 +41,7 @@ class CaloriesCalculator(Calculator):
         limit_today = self.get_today_limit()
         if limit_today > 0:
             return self.CALORIES.format(value=limit_today)
-        else:
-            return self.STOP_CALORIES
+        return self.STOP_CALORIES
 
 
 class CashCalculator(Calculator):
