@@ -6,10 +6,10 @@ class Calculator:
         self.limit = limit
         self.records = []
 
-    def day_remainder(self):
+    def get_today_limit(self):
         """Остаток дня."""
-        remainder_day = self.limit - self.get_today_stats()
-        return remainder_day
+        limit_today = self.limit - self.get_today_stats()
+        return limit_today
 
     def add_record(self, record):
         """Добавляет новую запись в список."""
@@ -38,9 +38,9 @@ class CaloriesCalculator(Calculator):
 
     def get_calories_remained(self):
         """Выводит кол-во калорий, которые можно потребить."""
-        remainder_day = self.day_remainder()
-        if remainder_day > 0:
-            return self.CALORIES.format(value=remainder_day)
+        limit_today = self.get_today_limit()
+        if limit_today > 0:
+            return self.CALORIES.format(value=limit_today)
         else:
             return self.STOP_CALORIES
 
@@ -56,7 +56,7 @@ class CashCalculator(Calculator):
         currencies = {'usd': ('USD', CashCalculator.USD_RATE),
                       'eur': ('Euro', CashCalculator.EURO_RATE),
                       'rub': ('руб', CashCalculator.RUB_RATE)}
-        cash_remained = self.day_remainder()
+        cash_remained = self.get_today_limit()
         if cash_remained == 0:
             return 'Денег нет, держись'
         if currency not in currencies:
@@ -82,7 +82,3 @@ class Record:
             self.date = dt.date.today()
         else:
             self.date = dt.datetime.strptime(date, self.DATE_FORMAT).date()
-
-
-if __name__ == '__main__':
-    pass
